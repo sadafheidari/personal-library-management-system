@@ -1,3 +1,6 @@
+
+books= []
+
 print("="* 50)
 print ("PERSONAL LIBRARY MANAGEMENT SYSTEM")
 print("="* 50)
@@ -12,9 +15,24 @@ print("7. Exit")
 choice= input(" select your choice: ")
 
 if choice == '1':
-    print("Adding a book is selected")
+    title = input("Enter the name of the book: ").strip()
+    author = input("Enter the author: ").strip()
+    year= input("Enter the year: ").strip()
+    price = input("Enter the price: ").strip()
+    book = {"title": title, "author": author, "year": year, "price": price,"status": "Available"}
+    books.append(book)
+    print(f"\ntitle of {title} added successfully")
 elif choice == "2" :
-    print(" Viewing all books is selected")
+
+    print("======== َAvailable Books in the library =======")
+    if len(books) == 0:
+        print("No books available")
+        print("=" *40)
+    else:
+        for book in books:
+            print(f'\ntitle: {book["title"]} ,author: {book["author"]},year: {book["year"]},price: {book["price"]},status: {book["status"]}')
+            print( "=" *40)
+
 elif choice == "3" :
     print("Searching for a book is selected")
 elif choice == "4":
