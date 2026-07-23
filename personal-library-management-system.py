@@ -27,7 +27,7 @@ while True:
         print()
     elif choice == "2" :
 
-        print("======== َAvailable Books in the library =======")
+        print("======== Available Books in the library =======")
         print()
         if len(books) == 0:
             print("No books available")
@@ -48,10 +48,19 @@ while True:
                 found = True
                 break
         if not found:
-            print("the book title doesn't exist")
+            print("The book title does not exist")
         print()
     elif choice == "4":
-        print("Removing a book is selected")
+        remove_title = input("Enter the book title to remove: ").strip().lower()
+        found = False
+        for book in books:
+            if book["title"] == remove_title:
+                books.remove(book)
+                print(f"the book title:{book['title']}removed successfully ")
+                found = True
+                break
+        if not found:
+            print("The book title does not exist")
         print()
     elif choice == "5":
         print("Borrowing a book is selected")
