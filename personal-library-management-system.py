@@ -1,4 +1,6 @@
 
+
+import json
 books= []
 while True:
 
@@ -95,9 +97,13 @@ while True:
                 print("The book title does not exist")
         print()
     elif choice == "7":
-        print("Thank you for using Personal Library Management System!")
-        print()
-        break
+        with open("books.json", "w") as file:
+            json.dump(books, file, indent=4)
+
+            print("Thank you for using Personal Library Management System!")
+            print()
+            break
+
     else:
         print("Please select a valid option")
         print()
