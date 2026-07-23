@@ -1,7 +1,13 @@
 
 
 import json
-books= []
+
+try:
+    with open("books.json", "r") as file:
+        books = json.load(file)
+except FileNotFoundError:
+    books = []
+
 while True:
 
 
@@ -100,9 +106,9 @@ while True:
         with open("books.json", "w") as file:
             json.dump(books, file, indent=4)
 
-            print("Thank you for using Personal Library Management System!")
-            print()
-            break
+        print("Thank you for using Personal Library Management System!")
+        print()
+        break
 
     else:
         print("Please select a valid option")
