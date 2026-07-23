@@ -17,8 +17,8 @@ while True:
     choice= input(" select your choice: ")
 
     if choice == '1':
-        title = input("Enter the name of the book: ").strip()
-        author = input("Enter the author: ").strip()
+        title = input("Enter the name of the book: ").strip().lower()
+        author = input("Enter the author: ").strip().lower()
         year= input("Enter the year: ").strip()
         price = input("Enter the price: ").strip()
         book = {"title": title, "author": author, "year": year, "price": price,"status": "Available"}
@@ -40,7 +40,15 @@ while True:
                 print()
 
     elif choice == "3" :
-        print("Searching for a book is selected")
+        search_title = input("Enter the book title to search: ").strip().lower()
+        found = False
+        for book in books:
+            if book["title"] == search_title:
+                print(f'\ntitle: {book["title"]} ,author: {book["author"]},year: {book["year"]},price: {book["price"]},status: {book["status"]}')
+                found = True
+                break
+        if not found:
+            print("the book title doesn't exist")
         print()
     elif choice == "4":
         print("Removing a book is selected")
