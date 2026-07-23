@@ -69,7 +69,7 @@ while True:
             if book["title"] == borrow_title:
                 found = True
 
-                if  borrow_title == "available":
+                if  book["status"]  == "Available":
                     book['status'] = 'Borrowed'
                     print(f"the book title:{book['title']} is borrowed ")
                 else:
@@ -79,7 +79,20 @@ while True:
             print("The book title does not exist")
         print()
     elif choice == "6":
-        print("Returning a book is selected")
+        return_title= input("Enter the book title to return: ").strip().lower()
+        found = False
+        for book in books:
+            if book["title"] == return_title:
+                found = True
+
+                if book["status"]  == "Borrowed":
+                    book["status"] = "Available"
+                    print(f"the book title:{book['title']} is returned")
+                else:
+                    print(f"the book title:{book['title']} is already available")
+                break
+        if not found:
+                print("The book title does not exist")
         print()
     elif choice == "7":
         print("Thank you for using Personal Library Management System!")
